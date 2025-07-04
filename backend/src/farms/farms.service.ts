@@ -8,7 +8,6 @@ export class FarmsService {
   constructor(private prisma: PrismaService) { }
 
   async create(createFarmDto: CreateFarmDto) {
-    // Verifica se o produtor existe
     const producer = await this.prisma.producer.findUnique({
       where: { id: createFarmDto.producerId },
     })
@@ -63,9 +62,8 @@ export class FarmsService {
   }
 
   async update(id: string, updateFarmDto: UpdateFarmDto) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
-    // Se está atualizando o produtor, verifica se existe
     if (updateFarmDto.producerId) {
       const producer = await this.prisma.producer.findUnique({
         where: { id: updateFarmDto.producerId },
@@ -87,7 +85,7 @@ export class FarmsService {
   }
 
   async remove(id: string) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
     await this.prisma.farm.delete({
       where: { id },

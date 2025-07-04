@@ -10,6 +10,7 @@
   - Acesse a API em `http://localhost:3001`
 
 - Frontend:
+
   - cd frontend
   - Instale as dependências com `npm install`
   - Inicie o servidor de desenvolvimento com `npm start`
@@ -18,7 +19,7 @@
 
 Aplicação seguindo as regras de negócio definidas no teste técnico da Brain Agriculture, com o objetivo de gerenciar o cadastro de produtores rurais e suas propriedades.
 
-Os testes automatizados não foram implementados devido à falta de tempo, mas a estrutura do projeto foi organizada para facilitar a adição de testes no futuro.
+Os testes automatizados foram implementados para garantir a qualidade do código e a funcionalidade da aplicação.
 
 # **Brain Agriculture - Teste Técnico v2**
 

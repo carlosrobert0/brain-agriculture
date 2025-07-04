@@ -8,7 +8,6 @@ export class HarvestsService {
   constructor(private prisma: PrismaService) { }
 
   async create(createHarvestDto: CreateHarvestDto) {
-    // Verifica se a fazenda existe
     const farm = await this.prisma.farm.findUnique({
       where: { id: createHarvestDto.farmId },
     })
@@ -65,9 +64,8 @@ export class HarvestsService {
   }
 
   async update(id: string, updateHarvestDto: UpdateHarvestDto) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
-    // Se está atualizando a fazenda, verifica se existe
     if (updateHarvestDto.farmId) {
       const farm = await this.prisma.farm.findUnique({
         where: { id: updateHarvestDto.farmId },
@@ -93,7 +91,7 @@ export class HarvestsService {
   }
 
   async remove(id: string) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
     await this.prisma.harvest.delete({
       where: { id },

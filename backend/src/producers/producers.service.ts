@@ -10,10 +10,8 @@ export class ProducersService {
   async create(createProducerDto: CreateProducerDto) {
     const { document } = createProducerDto
 
-    // Remove formatação do documento
     const cleanDocument = document.replace(/[^\d]/g, "")
 
-    // Verifica se o documento já existe
     const existingProducer = await this.prisma.producer.findUnique({
       where: { document: cleanDocument },
     })
@@ -68,15 +66,13 @@ export class ProducersService {
   }
 
   async update(id: string, updateProducerDto: UpdateProducerDto) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
     const updateData = { ...updateProducerDto }
 
-    // Se está atualizando o documento, remove formatação
     if (updateData.document) {
       updateData.document = updateData.document.replace(/[^\d]/g, "")
 
-      // Verifica se o novo documento já existe em outro produtor
       const existingProducer = await this.prisma.producer.findFirst({
         where: {
           document: updateData.document,
@@ -99,7 +95,7 @@ export class ProducersService {
   }
 
   async remove(id: string) {
-    await this.findOne(id) // Verifica se existe
+    await this.findOne(id)
 
     await this.prisma.producer.delete({
       where: { id },
