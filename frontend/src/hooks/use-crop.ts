@@ -2,7 +2,7 @@ import { deleteCrop } from "@/actions/crops/delete-crop";
 import { useApp } from "@/context/app-context";
 
 export function useCrop() {
-  const { state, refreshCrops } = useApp();
+  const { refreshCrops } = useApp();
 
   const onDeleteCrop = async (cropId: string) => {
     try {

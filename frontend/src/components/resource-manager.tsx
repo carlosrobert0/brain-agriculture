@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Plus, Edit, Sprout } from "lucide-react"
 import { type Crop, CROP_TYPES } from "@/types"
-import { Dialog, DialogContent, DialogTrigger, DialogClose, Close } from "@radix-ui/react-dialog"
+import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@radix-ui/react-dialog"
 import Link from "next/link"
 import { useApp } from "@/context/app-context"
 import { createCrop } from "@/actions/crops/create-crop"
@@ -240,7 +240,7 @@ export default function ResourceManager() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {crops?.map((crop: any) => (
+          {crops?.map((crop: Crop) => (
             <Card key={crop.id}>
               <CardHeader>
                 <div className="flex justify-between items-start">

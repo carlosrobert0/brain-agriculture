@@ -26,12 +26,12 @@ export default function ProducersPage() {
   const { producers } = state
   const [editingProducer, setEditingProducer] = useState<Producer | null>(null)
   const [open, setOpen] = useState(false)
-  const { getProducerFarmsCount, getProducerName, onDeleteProducer } = useProducer()
+  const { getProducerFarmsCount, onDeleteProducer } = useProducer()
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
     control
   } = useForm({
