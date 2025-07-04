@@ -8,7 +8,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   const configService = app.get(ConfigService)
 
-  // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -17,17 +16,12 @@ async function bootstrap() {
     }),
   )
 
-  // CORS
   app.enableCors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: ["http://localhost:3000", "http://localhost:3001", "https://brainagriculture.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
 
-  // API prefix
-  // app.setGlobalPrefix(configService.get("API_PREFIX", "api"))
-
-  // Swagger documentation
   const config = new DocumentBuilder()
     .setTitle(configService.get("SWAGGER_TITLE", "Brain Agriculture API"))
     .setDescription(configService.get("SWAGGER_DESCRIPTION", "API para gestão de produtores rurais"))
